@@ -46,6 +46,18 @@ public class BookItemDetailsActivity extends AppCompatActivity {
             }
         });
 
+        // 获取取消按钮的实例
+        Button buttonCancel = findViewById(R.id.button_item_detailsCancle);
+        // 为取消按钮设置点击事件监听器
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 结束当前的Activity，跳转回原界面
+                BookItemDetailsActivity.this.finish();
+            }
+        });
+
+
     }
 
 

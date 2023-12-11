@@ -60,7 +60,7 @@ public class WebViewFragment extends Fragment {
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true); // 启用JavaScript支持
         webView.setWebViewClient(new WebViewClient()); // 设置WebView客户端
-        webView.loadUrl("http://news.sina.com.cn/");
+        webView.loadUrl("http://baidu.com/");//http://news.sina.com.cn/
         return rootView;
     }
 }

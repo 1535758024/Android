@@ -11,8 +11,12 @@ import android.view.ViewGroup;
 
 import com.jnu.student.data.BookLocation;
 import com.jnu.student.data.DataDownload;
+import com.tencent.tencentmap.mapsdk.maps.CameraUpdate;
 import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
 import com.tencent.tencentmap.mapsdk.maps.TencentMap;
+import com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptor;
+import com.tencent.tencentmap.mapsdk.maps.model.BitmapDescriptorFactory;
+import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import com.tencent.tencentmap.mapsdk.maps.model.Marker;
 import com.tencent.tencentmap.mapsdk.maps.model.MarkerOptions;
@@ -79,15 +83,58 @@ public class TencentMapFragment extends Fragment {
         TencentMap tencentMap = mapView.getMap();
 
         LatLng point1 = new LatLng(22.255453, 113.54145);
+
+        CameraUpdate cameraSigma =
+                CameraUpdateFactory.newCameraPosition(new CameraPosition(
+                        point1,   //坐标
+                        16,         //目标缩放级别
+                        0f,         //目标倾斜角[0.0 ~ 45.0] (垂直地图时为0)
+                        0f));       //目标旋转角 0~360° (正北方为0)
+
         tencentMap.moveCamera(CameraUpdateFactory.newLatLng(point1));
 
+
+        BitmapDescriptor custom = BitmapDescriptorFactory.fromResource(R.drawable.jnu);
         // 创建一个Marker对象
         MarkerOptions markerOptions = new MarkerOptions(point1)
-                .title("标记标题");
+                .title("JNU(珠海暨南大学)");
+       //         .icon(custom) // 设置自定义的BitmapDescriptor
+        //        .anchor(0.5f, 0.5f) // 设置图片的锚点为中心
+         //       .alpha(1f)
+         //       .flat(true)
+         //       .clockwise(false)
+          //      .rotation(0);
 
         // 添加标记到地图上
         Marker marker = tencentMap.addMarker(markerOptions);
 
+        // 设置InfoWindow的内容
+        marker.setSnippet("这里是暨南大学珠海校区，北纬22°，东经113°.\n\n"+
+                "暨南大学珠海校区（Jinan University Zhuhai Campus）\n"+
+                "是暨南大学的一个分校区，位于广东省珠海市。暨南大\n" +
+                "学于1998年在珠海成立珠海学院，并于1998年8月28日\n"+
+                "与珠海市人民政府签订《共建暨南大学珠海学院协议》。\n"+
+                "2009年4月1日，学校实施校区化改革，珠海学院更名为\n"+
+                "暨南大学珠海校区。\n"
+        );
+
+        //设置Marker支持点击
+        marker.setClickable(true);
+
+        //设置Marker点击事件监听
+        tencentMap.setOnMarkerClickListener(new TencentMap.OnMarkerClickListener(){
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                if(marker.getId().equals(marker.getId())) {
+                    //自定义Marker被点击
+                    marker.showInfoWindow(); //显示InfoWindow
+                }
+                return true;
+            }
+        });
+
+
+        
         return rootView;
     }
 
