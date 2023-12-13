@@ -11,11 +11,12 @@ import androidx.viewpager2.widget.ViewPager2;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.jnu.student.view.CustomClockView;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private String[] tabHeaderStrings = {"Book items","tengxun maps", "News"};//"baidu maps"
+    private String[] tabHeaderStrings = {"Book items","tengxun maps", "News","time","game"};//"baidu maps"
 
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public class FragmentAdapter extends FragmentStateAdapter {
-        private static final int NUM_TABS = 3;
+        private static final int NUM_TABS = 5;
 
         public FragmentAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
             super(fragmentManager, lifecycle);
@@ -56,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
                     return new TencentMapFragment();
                 case 2:
                     return new WebViewFragment();
+                case 3:
+                    return new ClockFragment();
+                case 4:
+                    return new GameViewFragment();
                 default:
                     return null;
             }

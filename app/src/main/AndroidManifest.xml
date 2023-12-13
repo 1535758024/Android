@@ -48,5 +48,9 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <!--腾讯地图 SDK 要求的权限(结束)-->
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
 
 </manifest>
