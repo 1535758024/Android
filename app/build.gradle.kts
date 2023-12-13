@@ -6,6 +6,8 @@ android {
     namespace = "com.jnu.student"
     compileSdk = 33
 
+
+
     defaultConfig {
         applicationId = "com.jnu.student"
         minSdk = 24
@@ -14,6 +16,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
     }
 
     buildTypes {
@@ -22,10 +26,13 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
   //  compileOptions {
    //   sourceCompatibility = JavaVersion.VERSION_1_80
    //   targetCompatibility = JavaVersion.VERSION_1_8
    // }
+
+
 }
 
 dependencies {
@@ -35,6 +42,8 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.tencent.map:tencent-map-vector-sdk:4.3.4")
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.json:json:20231013")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
 }
