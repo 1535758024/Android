@@ -59,8 +59,8 @@ public class MainActivity extends AppCompatActivity {
                     return new WebViewFragment();
                 case 3:
                     return new ClockFragment();
-                //case 4:
-                  //  return new GameViewFragment();
+                case 4:
+                    return new GameViewFragment();
                 default:
                     return null;
             }
